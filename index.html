@@ -210,26 +210,29 @@
         vital: {
             title: "生命徵象",
             fields: [
+                { id: 's_subjective', label: '主觀主訴 (S)', type: 'text', placeholder: '如: 病人表示無不適' },
                 { id: 'temp', label: '體溫 (℃)', type: 'number', step: '0.1', value: '36.5' },
                 { id: 'hr', label: '脈搏 (次/分)', type: 'number', value: '80' },
                 { id: 'rr', label: '呼吸 (次/分)', type: 'number', value: '18' },
                 { id: 'bp', label: '血壓 (mmHg)', type: 'text', value: '120/80' },
-                { id: 'trend', label: '數值趨勢', type: 'select', options: ['穩定', '較前次上升', '較前次下降'] }
+                { id: 'trend', label: '數值趨勢評估 (A)', type: 'select', options: ['生命徵象穩定', '較前次上升', '較前次下降', '血壓偏高'] }
             ]
         },
         io_nutri: {
             title: "排泄與營養",
             fields: [
-                { id: 'intake', label: '總攝入 (Intake)', type: 'text', placeholder: '如: 1500ml (水+點滴)' },
-                { id: 'output', label: '總排出 (Output)', type: 'text', placeholder: '如: 1200ml (尿量)' },
-                { id: 'appetite', label: '食慾情況', type: 'select', options: ['正常', '佳', '欠佳', '由口進食困難', 'NPO'] },
+                { id: 's_subjective', label: '主觀主訴 (S)', type: 'text', placeholder: '如: 表示想喝水、食慾正常' },
+                { id: 'intake', label: '總攝入 (Intake)', type: 'text', placeholder: '如: 1500ml' },
+                { id: 'output', label: '總排出 (Output)', type: 'text', placeholder: '如: 1200ml' },
+                { id: 'appetite', label: '食慾/飲食量', type: 'select', options: ['正常', '佳', '欠佳', '由口進食困難', 'NPO'] },
                 { id: 'stool', label: '排便情況', type: 'text', placeholder: '如: 1次/軟便' },
-                { id: 'weight', label: '體重變化', type: 'text', placeholder: '如: 無明顯變化' }
+                { id: 'weight', label: '體重/外觀變化', type: 'text', placeholder: '如: 無水腫' }
             ]
         },
         neuro: {
             title: "意識與神智",
             fields: [
+                { id: 's_subjective', label: '主觀主訴 (S)', type: 'text', placeholder: '如: 能正確回答定向感問題' },
                 { id: 'level', label: '意識狀態', type: 'select', options: ['Clear(清醒)', 'Drowsy(嗜睡)', 'Confusion(混淆)', 'Stupor(昏迷)', 'Coma(深昏迷)'] },
                 { id: 'gcs', label: 'GCS 分數', type: 'text', value: 'E4V5M6' },
                 { id: 'pupil', label: '瞳孔反應', type: 'text', value: '3.0+/3.0+' },
@@ -239,15 +242,18 @@
         resp: {
             title: "呼吸系統",
             fields: [
+                { id: 's_subjective', label: '主觀主訴 (S)', type: 'text', placeholder: '如: 痰很多，很黏，咳不出來' },
                 { id: 'spo2', label: 'SpO2 (%)', type: 'number', value: '98' },
-                { id: 'cough', label: '咳嗽狀況', type: 'select', options: ['無', '偶爾咳嗽', '頻繁痰咳', '乾咳'] },
-                { id: 'sputum', label: '痰液量/色', type: 'text', placeholder: '如: 量少/白色黏稠' },
+                { id: 'rr', label: '呼吸次數', type: 'number', value: '20' },
+                { id: 'cough', label: '咳嗽狀況', type: 'select', options: ['無', '偶爾咳嗽', '頻繁痰咳', '乾咳', '咳嗽無力'] },
+                { id: 'sputum', label: '痰液量/色/性質', type: 'text', placeholder: '如: 黃綠色且黏稠' },
                 { id: 'breath_sound', label: '呼吸音', type: 'select', options: ['Clear', 'Wheezing', 'Crackle', 'Stridor'] }
             ]
         },
         gi: {
             title: "腸胃系統",
             fields: [
+                { id: 's_subjective', label: '主觀主訴 (S)', type: 'text', placeholder: '如: 肚子很脹、隱隱作痛' },
                 { id: 'abd_pain', label: '腹痛狀況', type: 'select', options: ['無', '輕微隱痛', '陣發性絞痛', '壓痛'] },
                 { id: 'distension', label: '腹脹', type: 'select', options: ['無', '輕微', '顯著腹脹'] },
                 { id: 'vomit', label: '嘔吐/腹瀉', type: 'text', placeholder: '如: 嘔吐1次/量約50cc' }
@@ -256,38 +262,44 @@
         pain: {
             title: "疼痛評估",
             fields: [
-                { id: 'nrs', label: '疼痛分數 (NRS 0-10)', type: 'number', value: '0' },
-                { id: 'nature', label: '疼痛性質', type: 'text', placeholder: '如: 傷口悶痛、刺痛' },
-                { id: 'action', label: '處置與反應', type: 'text', placeholder: '如: 給予止痛藥後緩解' }
+                { id: 's_subjective', label: '主觀主訴 (S)', type: 'text', placeholder: '如: 肚子很痛，不敢翻身' },
+                { id: 'nrs', label: '疼痛分數 (NRS 0-10)', type: 'number', value: '7' },
+                { id: 'nature', label: '疼痛性質與位置', type: 'text', placeholder: '如: 腹部傷口悶痛' },
+                { id: 'objective_obs', label: '客觀表現 (O)', type: 'text', placeholder: '如: 表情痛苦、肢體緊繃' },
+                { id: 'action', label: '處置措施', type: 'text', placeholder: '如: 依醫囑予止痛劑' }
             ]
         },
         skin: {
             title: "皮膚完整性",
             fields: [
-                { id: 'redness', label: '紅腫/瘀斑', type: 'text', placeholder: '如: 無、尾骶骨微紅' },
-                { id: 'ulcer', label: '潰瘍/傷口', type: 'text', placeholder: '如: 無、足跟壓瘡2級' },
+                { id: 's_subjective', label: '主觀主訴 (S)', type: 'text', placeholder: '如: 屁股皮膚刺刺痛痛的' },
+                { id: 'redness', label: '紅腫/瘀斑', type: 'text', placeholder: '如: 尾骶骨微紅，指壓不退色' },
+                { id: 'ulcer', label: '潰瘍/傷口', type: 'text', placeholder: '如: 足跟壓瘡2級' },
                 { id: 'edema', label: '水腫情況', type: 'select', options: ['無', '1+', '2+', '3+', '4+'] }
             ]
         },
         fever: {
             title: "發燒處理",
             fields: [
+                { id: 's_subjective', label: '主觀主訴 (S)', type: 'text', placeholder: '如: 我好冷、全身發抖' },
                 { id: 'f_temp', label: '發燒體溫', type: 'number', step: '0.1' },
-                { id: 'chill', label: '畏寒', type: 'select', options: ['無', '輕微', '嚴重顫抖'] },
+                { id: 'chill', label: '畏寒/行為', type: 'select', options: ['無', '輕微', '嚴重顫抖'] },
                 { id: 'f_action', label: '處置措施', type: 'text', placeholder: '如: 冰枕、Scanol 1# PO' }
             ]
         },
         meds: {
             title: "給藥紀錄",
             fields: [
+                { id: 's_subjective', label: '主觀主訴 (S)', type: 'text', placeholder: '如: 了解止痛藥目的' },
                 { id: 'med_name', label: '特殊藥物名稱', type: 'text' },
                 { id: 'med_time', label: '給藥時間', type: 'text', placeholder: '如: 09:00' },
-                { id: 'med_reaction', label: '用藥後反應', type: 'text', value: '觀察中，目前無過敏反應' }
+                { id: 'med_reaction', label: '用藥後反應/評值', type: 'text', placeholder: '如: 30分鐘後疼痛減輕' }
             ]
         },
         tube: {
             title: "管路護理",
             fields: [
+                { id: 's_subjective', label: '主觀主訴 (S)', type: 'text', placeholder: '如: 傷口管路處無不適' },
                 { id: 't_type', label: '管路種類', type: 'text', placeholder: '如: Foley, NG, CVC' },
                 { id: 't_site', label: '固定深度/部位', type: 'text' },
                 { id: 't_drain', label: '引流性質/量', type: 'text' }
@@ -296,6 +308,7 @@
         exam: {
             title: "檢查準備",
             fields: [
+                { id: 's_subjective', label: '主觀主訴 (S)', type: 'text', placeholder: '如: 了解今天要做胃鏡' },
                 { id: 'exam_name', label: '檢查項目', type: 'text' },
                 { id: 'npo', label: '禁食狀態', type: 'select', options: ['已開始禁食', '不需禁食', '檢查後恢復飲食'] },
                 { id: 'exam_note', label: '準備/術後紀錄', type: 'text', placeholder: '如: 已更換手術衣、術後回室' }
@@ -304,8 +317,10 @@
         edu: {
             title: "衛教與交班",
             fields: [
-                { id: 'edu_type', label: '衛教項目', type: 'text', placeholder: '如: 糖尿病飲食、翻身技巧' },
-                { id: 'handover', label: '交接事項', type: 'text', placeholder: '如: 轉入/轉出床號、重要提醒' }
+                { id: 's_subjective', label: '主觀主訴 (S)', type: 'text', placeholder: '如: 不知道胰島素何時打' },
+                { id: 'edu_type', label: '衛教項目/知識缺乏點', type: 'text', placeholder: '如: 糖尿病自我照護知識' },
+                { id: 'edu_plan', label: '衛教計畫', type: 'text', placeholder: '如: 提供衛教單張並教導監測' },
+                { id: 'handover', label: '評值結果', type: 'text', placeholder: '如: 病人能覆述正確標準' }
             ]
         }
     };
@@ -342,43 +357,43 @@
         const now = new Date();
         const timeStr = now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
 
-        const getV = (id) => document.getElementById(id)?.value || "";
+        const getV = (id) => document.getElementById(id)?.value || "未提及";
 
         if (currentCategory === 'vital') {
-            soap = `S: 病人無主訴不適。\nO: T:${getV('temp')}℃, HR:${getV('hr')}次/分, RR:${getV('rr')}次/分, BP:${getV('bp')}mmHg。生命徵象呈${getV('trend')}趨勢。\nA: 生命徵象穩定。\nP: 持續監測生命徵象。`;
+            soap = `S: "${getV('s_subjective')}"\nO: T:${getV('temp')}℃, HR:${getV('hr')}次/分, RR:${getV('rr')}次/分, BP:${getV('bp')}mmHg。\nA: ${getV('trend')}。\nP: 持續監測生命徵象並記錄趨勢變化。`;
         } 
         else if (currentCategory === 'io_nutri') {
-            soap = `S: 病人自訴食慾${getV('appetite')}。\nO: Intake:${getV('intake')}, Output:${getV('output')}, 體重:${getV('weight')}, 排便:${getV('stool')}。\nA: 營養與液體平衡狀態維持。\nP: 1. 持續紀錄I/O。 2. 鼓勵少量多餐進食。`;
+            soap = `S: 病人自訴:"${getV('s_subjective')}"\nO: Intake:${getV('intake')}, Output:${getV('output')}, 食慾評估:${getV('appetite')}, 排便:${getV('stool')}, 身體徵象:${getV('weight')}。\nA: 營養與液體平衡狀態評估。\nP: 1. 持續紀錄I/O。 2. 必要時鼓勵少量多餐，觀察食慾改善情況。`;
         }
         else if (currentCategory === 'neuro') {
-            soap = `S: 病人能正確回答姓名。\nO: 意識:${getV('level')}, GCS:${getV('gcs')}, Pupil:${getV('pupil')}。${getV('neuro_note')}。\nA: 神經學狀態穩定。\nP: 定時執行神經學評估與翻身護理。`;
+            soap = `S: 病人主訴:"${getV('s_subjective')}"\nO: 意識等級:${getV('level')}, GCS分數:${getV('gcs')}, Pupil反應:${getV('pupil')}。${getV('neuro_note')}。\nA: 神經學意識狀態觀察中。\nP: 每班執行神經學評估，觀察有無意識程度變化。`;
         }
         else if (currentCategory === 'resp') {
-            soap = `S: 病人自訴咳嗽${getV('cough')}。\nO: SpO2:${getV('spo2')}%, 呼吸音:${getV('breath_sound')}, 痰液:${getV('sputum')}。\nA: 呼吸道清除功能不彰。\nP: 1. 鼓勵深呼吸與有效咳嗽。 2. 必要時執行抽痰及氧氣給予。`;
+            soap = `S: 病人表示:"${getV('s_subjective')}"\nO: 呼吸 ${getV('rr')}次/分, SpO2 ${getV('spo2')}%, 咳嗽力道:${getV('cough')}, 呼吸音:${getV('breath_sound')}, 痰液:${getV('sputum')}。\nA: 呼吸道清除功能失效，與痰液性質及排痰能力有關。\nP: 1. 協助翻身拍痰。 2. 指導有效咳嗽及呼吸技巧。 3. 遵醫囑給予相關呼吸治療並評估效果。`;
         }
         else if (currentCategory === 'gi') {
-            soap = `S: 病人表示${getV('abd_pain') === '無' ? '無腹部不適' : '有'+getV('abd_pain')}。\nO: 腹脹:${getV('distension')}, 嘔吐/腹瀉紀錄:${getV('vomit')}。\nA: 腸胃功能改變。\nP: 觀察腹部症狀及排泄物性質，必要時依醫囑給藥。`;
+            soap = `S: 病人表示:"${getV('s_subjective')}"\nO: 腹痛程度:${getV('abd_pain')}, 腹脹情形:${getV('distension')}, 嘔吐/腹瀉紀錄:${getV('vomit')}。\nA: 腸胃系統功能改變或不適。\nP: 1. 觀察腹部症狀與排泄性質。 2. 視需要採禁食或調整飲食。`;
         }
         else if (currentCategory === 'pain') {
-            soap = `S: 病人主訴疼痛，NRS分數:${getV('nrs')}分。\nO: 疼痛性質為${getV('nature')}。\nA: 疼痛與疾病或傷口相關。\nP: 1. 執行疼痛護理處置。 2. ${getV('action')}。 3. 30分鐘後評估止痛效果。`;
+            soap = `S: 病人表示:"${getV('s_subjective')}"\nO: 疼痛評分(NRS):${getV('nrs')}分, 性質位置:${getV('nature')}。表現:${getV('objective_obs')}。\nA: 急性疼痛，與組織受損或疾病過程有關。\nP: 1. 評估疼痛性質與誘發因子。 2. 指導舒適姿勢減壓。 3. ${getV('action')}。評估1小時後緩解情況。`;
         }
         else if (currentCategory === 'skin') {
-            soap = `S: 病人表示皮膚無劇烈搔癢。\nO: 紅腫情況:${getV('redness')}, 潰瘍/傷口:${getV('ulcer')}, 水腫評估:${getV('edema')}。\nA: 皮膚完整性受損風險。\nP: 1. 保持皮膚乾燥清潔。 2. 定時協助翻身與使用減壓床墊。`;
+            soap = `S: 病人表示:"${getV('s_subjective')}"\nO: 紅腫/瘀斑評估:${getV('redness')}, 傷口/潰瘍:${getV('ulcer')}, 水腫程度:${getV('edema')}。\nA: 皮膚完整性受損(風險)。\nP: 1. 保持皮膚乾燥清潔。 2. 定時協助翻身減壓。 3. 執行傷口護理並觀察癒合情形。`;
         }
         else if (currentCategory === 'fever') {
-            soap = `S: 病人表示感到發冷、畏寒:${getV('chill')}。\nO: 體溫:${getV('f_temp')}℃。\nA: 體溫過高，與潛在感染相關。\nP: 1. 執行${getV('f_action')}。 2. 協助水分補充。 3. 1小時後複測體溫。`;
+            soap = `S: 病人表示:"${getV('s_subjective')}"\nO: 體溫:${getV('f_temp')}℃, 畏寒表現:${getV('chill')}。\nA: 體溫過高，與發炎或感染反應有關。\nP: 1. 執行${getV('f_action')}。 2. 協助更換乾爽衣物。 3. 補充水分並於1小時後複測體溫評值。`;
         }
         else if (currentCategory === 'meds') {
-            soap = `S: 病人了解給藥目的。\nO: 於${getV('med_time')}給予${getV('med_name')}。\nA: 完成特殊用藥給予。\nP: ${getV('med_reaction')}。`;
+            soap = `S: 病人表示:"${getV('s_subjective')}"\nO: 於${getV('med_time')}給予${getV('med_name')}。\nA: 給藥處置與反應追蹤。\nP: 評值: ${getV('med_reaction')}。`;
         }
         else if (currentCategory === 'tube') {
-            soap = `S: 病人自訴管路位置無異常牽扯感。\nO: ${getV('t_type')}固定於${getV('t_site')}, 引流性質:${getV('t_drain')}, 管路通暢。\nA: 管路狀態安全無虞。\nP: 定時更換膠帶並執行管路護理。`;
+            soap = `S: 病人表示:"${getV('s_subjective')}"\nO: ${getV('t_type')}固定於${getV('t_site')}, 引流性質與量:${getV('t_drain')}。\nA: 管路留置狀態評估。\nP: 維持管路通暢，定期更換膠帶固定，觀察引流液變化。`;
         }
         else if (currentCategory === 'exam') {
-            soap = `S: 病人了解檢查流程。\nO: 檢查項目:${getV('exam_name')}, 目前${getV('npo')}。\nA: 完成檢查前後相關護理。\nP: ${getV('exam_note')}。`;
+            soap = `S: 病人表示:"${getV('s_subjective')}"\nO: 檢查項目:${getV('exam_name')}, 狀態:${getV('npo')}。\nA: 檢查前準備/後護理。\nP: 評值/進度: ${getV('exam_note')}。`;
         }
         else if (currentCategory === 'edu') {
-            soap = `S: 病人表示了解衛教內容。\nO: 執行${getV('edu_type')}。交班重點:${getV('handover')}。\nA: 已完成衛教/交班手續。\nP: 持續衛教評估並確保資訊傳達準確。`;
+            soap = `S: 病人表示:"${getV('s_subjective')}"\nO: 對於${getV('edu_type')}不了解。\nA: 知識缺乏，與缺乏相關照護資訊有關。\nP: 1. ${getV('edu_plan')}。 2. 評值: ${getV('handover')}。`;
         }
 
         document.getElementById('soap-result').innerText = `【${timeStr} 護理紀錄】\n${soap}`;
